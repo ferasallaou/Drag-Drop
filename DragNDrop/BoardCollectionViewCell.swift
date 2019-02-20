@@ -14,21 +14,22 @@ class BoardCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var tableView: UITableView!
     var board: Board!
+    var db: Database!
+    
     weak var parentVC: BoardCollectionViewController?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        db = Database()
         
         tableView.dataSource = self
         tableView.delegate = self
         tableView.tableFooterView = UIView()
-        tableView.dragDelegate = self
         tableView.dragInteractionEnabled = true
-        tableView.dropDelegate = self
-        
+//        tableView.dropDelegate = self
+//        tableView.dragDelegate = self
         self.layer.masksToBounds = true
         self.layer.cornerRadius = 10.0
-        
         
     }
     
@@ -45,15 +46,25 @@ class BoardCollectionViewCell: UICollectionViewCell {
                 return
             }
             
-            guard let data = self.board else {
+            guard let _ = self.board else {
                 return
             }
             
-            data.items.append(text)
-            let addedIndexPath = IndexPath(item: data.items.count - 1, section: 0)
+
+            self.db.add(text, to: self.board.boardTitle) {
+                addError in
+                
+                guard addError == nil else {
+                    print("ERROR WHILE ADDING ITEM")
+                    return
+                }
+                
+                self.board = self.db.getSingle(self.board.boardTitle)
+                self.tableView.reloadData()
+                
+                
+            }
             
-            self.tableView.insertRows(at: [addedIndexPath], with: .automatic)
-            self.tableView.scrollToRow(at: addedIndexPath, at: UITableView.ScrollPosition.bottom, animated: true)
         }))
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -68,12 +79,13 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return board?.title
+        return board?.boardTitle
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = "\(board!.items[indexPath.row])"
+        let singleItem = board!.items[indexPath.row]
+        cell.textLabel?.text = "\(singleItem.singleItem)"
         return cell
     }
     
@@ -81,84 +93,4 @@ extension BoardCollectionViewCell: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-}
-
-extension BoardCollectionViewCell: UITableViewDragDelegate {
-    
-    func tableView(_ tableView: UITableView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        guard let board = board, let stringData = board.items[indexPath.row].data(using: .utf8) else {
-            return []
-        }
-        
-        let itemProvider = NSItemProvider(item: stringData as NSData, typeIdentifier: kUTTypePlainText as String)
-        let dragItem = UIDragItem(itemProvider: itemProvider)
-        session.localContext = (board, indexPath, tableView)
-        
-        return [dragItem]
-    }
-}
-
-extension BoardCollectionViewCell: UITableViewDropDelegate {
-    
-    func tableView(_ tableView: UITableView, performDropWith coordinator: UITableViewDropCoordinator) {
-        if coordinator.session.hasItemsConforming(toTypeIdentifiers: [kUTTypePlainText as String]) {
-            coordinator.session.loadObjects(ofClass: NSString.self) { (items) in
-                guard let string = items.first as? String else {
-                    return
-                }
-                var updatedIndexPaths = [IndexPath]()
-                
-                switch (coordinator.items.first?.sourceIndexPath, coordinator.destinationIndexPath) {
-                case (.some(let sourceIndexPath), .some(let destinationIndexPath)):
-                    // Same Table View
-                    if sourceIndexPath.row < destinationIndexPath.row {
-                        updatedIndexPaths =  (sourceIndexPath.row...destinationIndexPath.row).map { IndexPath(row: $0, section: 0) }
-                    } else if sourceIndexPath.row > destinationIndexPath.row {
-                        updatedIndexPaths =  (destinationIndexPath.row...sourceIndexPath.row).map { IndexPath(row: $0, section: 0) }
-                    }
-                    self.tableView.beginUpdates()
-                    self.board?.items.remove(at: sourceIndexPath.row)
-                    self.board?.items.insert(string, at: destinationIndexPath.row)
-                    self.tableView.reloadRows(at: updatedIndexPaths, with: .automatic)
-                    self.tableView.endUpdates()
-                    break
-                    
-                case (nil, .some(let destinationIndexPath)):
-                    // Move data from a table to another table
-                    self.removeSourceTableData(localContext: coordinator.session.localDragSession?.localContext)
-                    self.tableView.beginUpdates()
-                    self.board?.items.insert(string, at: destinationIndexPath.row)
-                    self.tableView.insertRows(at: [destinationIndexPath], with: .automatic)
-                    self.tableView.endUpdates()
-                    break
-                    
-                    
-                case (nil, nil):
-                    // Insert data from a table to another table
-                    self.removeSourceTableData(localContext: coordinator.session.localDragSession?.localContext)
-                    self.tableView.beginUpdates()
-                    self.board?.items.append(string)
-                    self.tableView.insertRows(at: [IndexPath(row: self.board!.items.count - 1 , section: 0)], with: .automatic)
-                    self.tableView.endUpdates()
-                    break
-                    
-                default: break
-                    
-                }
-            }
-        }
-    }
-    
-    func removeSourceTableData(localContext: Any?) {
-        if let (dataSource, sourceIndexPath, tableView) = localContext as? (Board, IndexPath, UITableView) {
-            tableView.beginUpdates()
-            dataSource.items.remove(at: sourceIndexPath.row)
-            tableView.deleteRows(at: [sourceIndexPath], with: .automatic)
-            tableView.endUpdates()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UITableViewDropProposal {
-        return UITableViewDropProposal(operation: .move, intent: .insertAtDestinationIndexPath)
-    }
 }

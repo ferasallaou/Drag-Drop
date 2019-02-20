@@ -7,3 +7,14 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Board: Object {
+    @objc dynamic var boardTitle = ""
+    var items = List<BoardItems>()
+}
+
+class BoardItems: Object {
+    @objc dynamic var singleItem: String = ""
+    
+}

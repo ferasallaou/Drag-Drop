@@ -7,25 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		858E4ADF19794A112570D48A /* Pods_DragNDrop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5340B6787D17703E86A59DC7 /* Pods_DragNDrop.framework */; };
+		E0014D4B221C088E00AFE65F /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0014D4A221C088E00AFE65F /* Models.swift */; };
+		E0014D4D221C0A0400AFE65F /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0014D4C221C0A0400AFE65F /* Database.swift */; };
 		E01965A32217028C001D8C3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01965A22217028C001D8C3D /* AppDelegate.swift */; };
 		E01965A82217028C001D8C3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01965A62217028C001D8C3D /* Main.storyboard */; };
 		E01965AA2217028D001D8C3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E01965A92217028D001D8C3D /* Assets.xcassets */; };
 		E01965AD2217028D001D8C3D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E01965AB2217028D001D8C3D /* LaunchScreen.storyboard */; };
-		E01965B5221702B5001D8C3D /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01965B4221702B5001D8C3D /* Board.swift */; };
 		E01965B7221704D1001D8C3D /* BoardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01965B6221704D1001D8C3D /* BoardCollectionViewCell.swift */; };
 		E01965B922170624001D8C3D /* BoardCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01965B822170624001D8C3D /* BoardCollectionViewController.swift */; };
+		E03B05AA221C45C200A3B099 /* BoardCollection+DragDrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03B05A9221C45C200A3B099 /* BoardCollection+DragDrop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		251547C7F93432E58876F61F /* Pods-DragNDrop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragNDrop.release.xcconfig"; path = "Pods/Target Support Files/Pods-DragNDrop/Pods-DragNDrop.release.xcconfig"; sourceTree = "<group>"; };
+		5340B6787D17703E86A59DC7 /* Pods_DragNDrop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DragNDrop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A345BAC64342C0FD4AAD4104 /* Pods-DragNDrop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DragNDrop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DragNDrop/Pods-DragNDrop.debug.xcconfig"; sourceTree = "<group>"; };
+		E0014D4A221C088E00AFE65F /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		E0014D4C221C0A0400AFE65F /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		E019659F2217028C001D8C3D /* DragNDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DragNDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E01965A22217028C001D8C3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E01965A72217028C001D8C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E01965A92217028D001D8C3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E01965AC2217028D001D8C3D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E01965AE2217028D001D8C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E01965B4221702B5001D8C3D /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		E01965B6221704D1001D8C3D /* BoardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewCell.swift; sourceTree = "<group>"; };
 		E01965B822170624001D8C3D /* BoardCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCollectionViewController.swift; sourceTree = "<group>"; };
+		E03B05A9221C45C200A3B099 /* BoardCollection+DragDrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BoardCollection+DragDrop.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				858E4ADF19794A112570D48A /* Pods_DragNDrop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22211A2C1B351581732A13C3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A345BAC64342C0FD4AAD4104 /* Pods-DragNDrop.debug.xcconfig */,
+				251547C7F93432E58876F61F /* Pods-DragNDrop.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		85167D1D6B89B597CCBAF28C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5340B6787D17703E86A59DC7 /* Pods_DragNDrop.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E01965962217028C001D8C3D = {
 			isa = PBXGroup;
 			children = (
 				E01965A12217028C001D8C3D /* DragNDrop */,
 				E01965A02217028C001D8C3D /* Products */,
+				22211A2C1B351581732A13C3 /* Pods */,
+				85167D1D6B89B597CCBAF28C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,10 +90,12 @@
 				E01965A62217028C001D8C3D /* Main.storyboard */,
 				E01965B6221704D1001D8C3D /* BoardCollectionViewCell.swift */,
 				E01965B822170624001D8C3D /* BoardCollectionViewController.swift */,
+				E03B05A9221C45C200A3B099 /* BoardCollection+DragDrop.swift */,
 				E01965A92217028D001D8C3D /* Assets.xcassets */,
 				E01965AB2217028D001D8C3D /* LaunchScreen.storyboard */,
 				E01965AE2217028D001D8C3D /* Info.plist */,
-				E01965B4221702B5001D8C3D /* Board.swift */,
+				E0014D4A221C088E00AFE65F /* Models.swift */,
+				E0014D4C221C0A0400AFE65F /* Database.swift */,
 			);
 			path = DragNDrop;
 			sourceTree = "<group>";
@@ -77,9 +107,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E01965B12217028D001D8C3D /* Build configuration list for PBXNativeTarget "DragNDrop" */;
 			buildPhases = (
+				957A09454137FBA23EA4CE3C /* [CP] Check Pods Manifest.lock */,
 				E019659B2217028C001D8C3D /* Sources */,
 				E019659C2217028C001D8C3D /* Frameworks */,
 				E019659D2217028C001D8C3D /* Resources */,
+				2ACBB538D8F01D03B32EA067 /* [CP] Embed Pods Frameworks */,
+				4F0F59DD27CCCBC886CE93AF /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,15 +169,73 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		2ACBB538D8F01D03B32EA067 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-DragNDrop/Pods-DragNDrop-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DragNDrop/Pods-DragNDrop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F0F59DD27CCCBC886CE93AF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DragNDrop/Pods-DragNDrop-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		957A09454137FBA23EA4CE3C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-DragNDrop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E019659B2217028C001D8C3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E01965B5221702B5001D8C3D /* Board.swift in Sources */,
+				E0014D4D221C0A0400AFE65F /* Database.swift in Sources */,
 				E01965B922170624001D8C3D /* BoardCollectionViewController.swift in Sources */,
 				E01965A32217028C001D8C3D /* AppDelegate.swift in Sources */,
+				E03B05AA221C45C200A3B099 /* BoardCollection+DragDrop.swift in Sources */,
 				E01965B7221704D1001D8C3D /* BoardCollectionViewCell.swift in Sources */,
+				E0014D4B221C088E00AFE65F /* Models.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,6 +379,7 @@
 		};
 		E01965B22217028D001D8C3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A345BAC64342C0FD4AAD4104 /* Pods-DragNDrop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -306,6 +398,7 @@
 		};
 		E01965B32217028D001D8C3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 251547C7F93432E58876F61F /* Pods-DragNDrop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
